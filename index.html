@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create a Map</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.6/js/dojo/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.6/js/esri/css/esri.css">
+  <style>
+    html, body, #mapDiv{
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+  </style>
+  
+  <script src="http://js.arcgis.com/3.6/"></script>
+  <script>
+   
+    dojo.require("esri.map", "esri/layers/DynamicMapServiceLayer");
+ function init() {
+      var map = new esri.Map("mapDiv", {
+        center: [-0.54, 51.485],
+        zoom: 6,
+        basemap: "osm"
+      });
+      
+      var opLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://maps.groundwork.org.uk/arcgis/rest/services/GWL/LondonKeyStat3/MapServer", {"opacity":0.5});
+      
+      opLayer.setVisibleLayers([0,7]);
+      map.addLayer(opLayer);
+      
+      
+      
+  
+  
+  };
+    
+    dojo.ready(init);
+    
+  
+  
+  </script>
+
+</head>
+<body class="claro">
+  <div id="mapDiv"></div>
+</body>
+</html>
